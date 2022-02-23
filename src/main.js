@@ -3,6 +3,7 @@ import App from './App.vue'
 import router from './router'
 import store from './store'
 import Amplify from 'aws-amplify'
+// eslint-disable-next-line camelcase
 import aws_exports from './aws-exports'
 import {
   applyPolyfills,
