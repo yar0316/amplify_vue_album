@@ -2,6 +2,7 @@ import Vue from 'vue'
 import VueRouter from 'vue-router'
 import store from '@/store/index.js'
 import Auth from '@aws-amplify/auth'
+import { AuthState, onAuthUIStateChange } from '@aws-amplify/ui-components'
 import SignIn from '../views/SignIn.vue'
 import AlbumIndex from '../views/album/Index.vue'
 import AlbumCreate from '../views/album/Create.vue'
@@ -24,27 +25,32 @@ const routes = [
   {
     path: '/albums',
     name: 'AlbumIndex',
-    component: AlbumIndex
+    component: AlbumIndex,
+    meta: { requireAuth: true }
   },
   {
     path: '/albums/create',
     name: 'AlbumCreate',
-    component: AlbumCreate
+    component: AlbumCreate,
+    meta: { requireAuth: true }
   },
   {
     path: '/albums/edit',
     name: 'AlbumEdit',
-    component: AlbumEdit
+    component: AlbumEdit,
+    meta: { requireAuth: true }
   },
   {
     path: '/albums/show',
     name: 'AlbumShow',
-    component: AlbumShow
+    component: AlbumShow,
+    meta: { requireAuth: true }
   },
   {
     path: '/photo/create',
     name: 'PhotoCreate',
-    component: PhotoCreate
+    component: PhotoCreate,
+    meta: { requireAuth: true }
   }
 ]
 
@@ -69,10 +75,25 @@ function getAuthenticatedUser () {
     })
 }
 
+let user
+
 router.beforeResolve(async (to, from, next) => {
-  await getAuthenticatedUser()
+  user = await getAuthenticatedUser()
+
+  if (to.name === 'Signin' && user) {
+    return next({ name: 'AlbumIndex' })
+  }
 
   return next()
+})
+
+onAuthUIStateChange((authState, authData) => {
+  if (authState === AuthState.SignedIn && authData) {
+    router.push({ name: 'AlbumIndex' })
+  }
+  if (authState === AuthState.SignedOut) {
+    router.push({ name: 'SignIn' })
+  }
 })
 
 export default router
