@@ -1,6 +1,6 @@
 import Vue from 'vue'
 import VueRouter from 'vue-router'
-import SignIn from '../views/album/Signin.vue'
+import SignIn from '../views/SignIn.vue'
 import AlbumIndex from '../views/album/Index.vue'
 import AlbumCreate from '../views/album/Create.vue'
 import AlbumEdit from '../views/album/Edit.vue'

@@ -1,11 +1,11 @@
 <template>
-    <div>
-        <h1>サインイン</h1>
-    </div>
+  <div>
+    <h1>サインイン</h1>
+  </div>
 </template>
 
 <script>
 export default {
-    name: "SignIn"
+  name: 'SignIn'
 }
 </script>
