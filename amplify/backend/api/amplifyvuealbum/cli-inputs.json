@@ -1,0 +1,12 @@
+{
+  "version": 1,
+  "serviceConfiguration": {
+    "apiName": "amplifyvuealbum",
+    "serviceName": "AppSync",
+    "gqlSchemaPath": "C:\\Users\\yutar\\workspace\\amplify-vue-album\\amplify\\backend\\api\\amplifyvuealbum\\schema.graphql",
+    "defaultAuthType": {
+      "mode": "AMAZON_COGNITO_USER_POOLS",
+      "cognitoUserPoolId": "authamplifyvuealbum1f0e95cf"
+    }
+  }
+}
