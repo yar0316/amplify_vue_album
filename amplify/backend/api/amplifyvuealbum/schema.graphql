@@ -7,15 +7,14 @@ type Album
   @auth( rules: [{ allow: owner }]){
     id: ID!
     name: String!
-    photos: [Photo] @connection( keyName: 'byAlbum', fields: ['id'] )
+    photos: [Photo] @hasMany
   }
 
 type Photo 
   @model
-  @auth( rules: [{ allow: owner }] )
-  @key( name: byAlbum, fields: ['albumID'] ) {
+  @auth( rules: [{ allow: owner }] ) {
     id: ID!
     name: String!
-    albumID: ID!
-    album: Album @connection( fields: ['albumID'] )
+    albumID: ID! @index( name: "byAlbum")
+    album: Album @belongsTo
   }
