@@ -15,6 +15,7 @@ type Photo
   @auth( rules: [{ allow: owner }] ) {
     id: ID!
     name: String!
+    s3key: String!
     albumID: ID! @index( name: "byAlbum")
     album: Album @belongsTo
   }
