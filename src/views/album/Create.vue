@@ -4,13 +4,16 @@
     <form @submit.prevent="submitCreate">
       <label>Name</label><br />
       <input v-model="form.name" placeholder="Enter album name" /><br />
+      <p>ここに画像フォーム</p>
+      <label >Photo</label>
+      <input type="file" @change="onFileChange"><br>
       <input type="submit" value="Submit" />
     </form>
   </div>
 </template>
 
 <script>
-import { API } from 'aws-amplify'
+import { API, Storage } from 'aws-amplify'
 import { createAlbum } from '../../graphql/mutations'
 
 export default {
@@ -18,12 +21,27 @@ export default {
   data () {
     return {
       form: {
-        name: ''
-      }
+        name: '',
+        s3key: ''
+      },
+      image: null
     }
   },
   methods: {
+    onFileChange (e) {
+      this.image = e.target.files[0]
+    },
     async submitCreate () {
+      const s3key = new Date().getItem().toString(16) + this.image.name
+      await Storage.put(s3key, this.image, {
+        level: 'private'
+      })
+        .then((result) => {
+          this.form.s3key = result.key
+        })
+        .catch((error) => {
+          console.log(error)
+        })
       await API.graphql({
         query: createAlbum,
         variables: { input: this.form }
