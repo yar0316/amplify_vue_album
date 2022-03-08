@@ -1,0 +1,14 @@
+{
+  "resourceName": "amplifyvuealbum",
+  "policyUUID": "fba119ca",
+  "bucketName": "amplify-vue-album",
+  "storageAccess": "auth",
+  "guestAccess": [],
+  "authAccess": [
+    "CREATE_AND_UPDATE",
+    "READ",
+    "DELETE"
+  ],
+  "triggerFunction": "NONE",
+  "groupAccess": {}
+}
