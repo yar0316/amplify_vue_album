@@ -13,6 +13,7 @@ export const createAlbum = /* GraphQL */ `
         items {
           id
           name
+          s3key
           albumID
           createdAt
           updatedAt
@@ -39,6 +40,7 @@ export const updateAlbum = /* GraphQL */ `
         items {
           id
           name
+          s3key
           albumID
           createdAt
           updatedAt
@@ -65,6 +67,7 @@ export const deleteAlbum = /* GraphQL */ `
         items {
           id
           name
+          s3key
           albumID
           createdAt
           updatedAt
@@ -87,6 +90,7 @@ export const createPhoto = /* GraphQL */ `
     createPhoto(input: $input, condition: $condition) {
       id
       name
+      s3key
       albumID
       album {
         id
@@ -113,6 +117,7 @@ export const updatePhoto = /* GraphQL */ `
     updatePhoto(input: $input, condition: $condition) {
       id
       name
+      s3key
       albumID
       album {
         id
@@ -139,6 +144,7 @@ export const deletePhoto = /* GraphQL */ `
     deletePhoto(input: $input, condition: $condition) {
       id
       name
+      s3key
       albumID
       album {
         id

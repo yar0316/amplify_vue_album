@@ -12,8 +12,15 @@ export type AmplifyDependentResourcesAttributes = {
     },
     "api": {
         "amplifyvuealbum": {
+            "GraphQLAPIKeyOutput": "string",
             "GraphQLAPIIdOutput": "string",
             "GraphQLAPIEndpointOutput": "string"
+        }
+    },
+    "storage": {
+        "amplifyvuealbum": {
+            "BucketName": "string",
+            "Region": "string"
         }
     }
 }

@@ -37,7 +37,16 @@
               "userPoolId": "authamplifyvuealbum1f0e95cf"
             }
           },
-          "additionalAuthenticationProviders": []
+          "additionalAuthenticationProviders": [
+            {
+              "authenticationType": "API_KEY",
+              "apiKeyConfig": {
+                "apiKeyExpirationDays": 365,
+                "apiKeyExpirationDate": "2023-03-08T13:20:02.630Z",
+                "description": "amplify-vue-album"
+              }
+            }
+          ]
         }
       }
     }

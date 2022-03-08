@@ -7,6 +7,14 @@
     "defaultAuthType": {
       "mode": "AMAZON_COGNITO_USER_POOLS",
       "cognitoUserPoolId": "authamplifyvuealbum1f0e95cf"
-    }
+    },
+    "additionalAuthTypes": [
+      {
+        "mode": "API_KEY",
+        "expirationTime": 365,
+        "apiKeyExpirationDate": "2023-03-08T13:20:02.630Z",
+        "keyDescription": "amplify-vue-album"
+      }
+    ]
   }
 }
